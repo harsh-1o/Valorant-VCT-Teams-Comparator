@@ -29,6 +29,12 @@ A **pre-built Windows executable (.exe) is available**!
 > **Note:** Each new version is uploaded as a release with the latest `.exe` bundled in a ZIP. Perfect for non-developers and quick demo!
 
 
+## Screenshots
+
+<img width="1840" height="913" alt="Screenshot 2025-09-06 151526" src="https://github.com/user-attachments/assets/e5c73ff1-aeb6-4f35-9f10-5ddf65b92fb6" />
+
+
+
 ## Getting Started
 
 ### 1. **Clone the Repository**
