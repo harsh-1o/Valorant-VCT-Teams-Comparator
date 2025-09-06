@@ -22,7 +22,7 @@ A powerful desktop and web tool for comparing Valorant Champions Tour 2025 teams
 
 A **pre-built Windows executable (.exe) is available**!
 
-- Go to the [Releases](https://github.com/harsh-1o/vct-team-comparator/releases) page.
+- Go to the [Releases](https://github.com/harsh-1o/Valorant-VCT-Teams-Comparator/releases) page.
 - Download the latest ZIP file, which contains the ready-to-run `.exe` for Windows—no installation of Node.js, Electron, or dependencies required.
 - Just unzip and double-click the `.exe` to start the app!
 
