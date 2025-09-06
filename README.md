@@ -29,11 +29,6 @@ A **pre-built Windows executable (.exe) is available**!
 > **Note:** Each new version is uploaded as a release with the latest `.exe` bundled in a ZIP. Perfect for non-developers and quick demo!
 
 
-## Screenshots
-
-<img width="1840" height="913" alt="Screenshot 2025-09-06 151526" src="https://github.com/user-attachments/assets/e5c73ff1-aeb6-4f35-9f10-5ddf65b92fb6" />
-
-
 
 ## Getting Started
 
@@ -91,6 +86,15 @@ MIT
 See `LICENSE` for details.
 
 ---
+
+## Screenshots
+
+<img width="1840" height="913" alt="Screenshot 2025-09-06 151526" src="https://github.com/user-attachments/assets/e5c73ff1-aeb6-4f35-9f10-5ddf65b92fb6" />
+<img width="1807" height="818" alt="Screenshot 2025-09-06 152513" src="https://github.com/user-attachments/assets/d531a20e-8fad-4921-a59d-e2baf4deff54" />
+<img width="1595" height="857" alt="Screenshot 2025-09-06 152529" src="https://github.com/user-attachments/assets/5c2f5881-f812-4a1e-af67-c082f4daa628" />
+<img width="1664" height="323" alt="Screenshot 2025-09-06 152539" src="https://github.com/user-attachments/assets/efe52695-e6dc-4139-98d3-11f80d0eb413" />
+
+
 
 Created with ❤️ by harsh-1o 
 
