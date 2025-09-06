@@ -1,5 +1,3 @@
-# Valorant-VCT-Teams-Comparator
-
 # VCT 2025 Champions - Team Comparator
 
 ![VCT Comparator](https://img.shields.io/badge/VCT-2025-red)  
