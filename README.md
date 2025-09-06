@@ -82,7 +82,8 @@ See [issues](https://github.com/harsh-1o/Valorant-VCT-Teams-Comparator/issues) o
 
 ## License
 
-GNU GENERAL PUBLIC LICENSE 
+GNU GENERAL PUBLIC LICENSE
+
 See `LICENSE` for details.
 
 ---
