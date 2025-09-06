@@ -86,7 +86,11 @@ See `LICENSE` for details.
 
 ---
 
-*Created with ❤️ by harsh-1o 
+Created with ❤️ by harsh-1o 
+
+<div align="center">
+<img src="https://visitor-badge.laobi.icu/badge?page_id=harsh-1o.Valorant-VCT-Teams-Comparator&" />
+</div>
 
 
 
