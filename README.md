@@ -5,6 +5,15 @@ A powerful desktop and web tool for comparing Valorant Champions Tour 2025 teams
 
 ---
 
+## 🌐 Live Demo
+
+**Check out the app live:**  
+[https://harsh-1o.github.io/Valorant-VCT-Teams-Comparator/](https://harsh-1o.github.io/Valorant-VCT-Teams-Comparator/)
+
+Just open the link above to use the VCT 2025 Team Comparator instantly in your browser—no install required!
+
+---
+
 ## Features
 
 - **Compare Any Two Teams:** Instantly analyze side-by-side stats for all 16 VCT 2025 Champions teams.
