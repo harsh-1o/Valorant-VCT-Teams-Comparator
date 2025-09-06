@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VCT 2025 Champions - Team Comparator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>VCT 2025 Champions - Team Comparator</h1>
+            <p>Compare any two qualified teams with detailed statistics and analytics</p>
+        </header>
+
+        <!-- Team Selection -->
+        <section class="team-selector">
+            <div class="selector-group">
+                <label for="team1-select" class="form-label">Team 1</label>
+                <select id="team1-select" class="form-control team-select">
+                    <option value="">Select a team...</option>
+                </select>
+            </div>
+            
+            <button id="swap-teams" class="btn btn--secondary swap-btn" disabled>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 2v6l-4-4-4 4V2M7 22v-6l4 4 4-4v6"/>
+                </svg>
+                Swap
+            </button>
+
+            <div class="selector-group">
+                <label for="team2-select" class="form-label">Team 2</label>
+                <select id="team2-select" class="form-control team-select">
+                    <option value="">Select a team...</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Comparison Content -->
+        <main id="comparison-content" class="comparison-content hidden">
+            <!-- Overall Performance -->
+            <section class="overall-performance">
+                <div class="team-overview">
+                    <div id="team1-overview" class="team-card">
+                        <h2 class="team-name"></h2>
+                        <span class="team-region"></span>
+                        <div class="overall-score">
+                            <span class="score-value"></span>
+                            <span class="score-label">Overall Score</span>
+                        </div>
+                        <div class="key-metrics">
+                            <div class="metric">
+                                <span class="metric-value championship-points"></span>
+                                <span class="metric-label">Championship Points</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value form-score"></span>
+                                <span class="metric-label">Form Score</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value predicted-tier"></span>
+                                <span class="metric-label">Predicted Tier</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value championship-prob"></span>
+                                <span class="metric-label">Championship Probability</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="team2-overview" class="team-card">
+                        <h2 class="team-name"></h2>
+                        <span class="team-region"></span>
+                        <div class="overall-score">
+                            <span class="score-value"></span>
+                            <span class="score-label">Overall Score</span>
+                        </div>
+                        <div class="key-metrics">
+                            <div class="metric">
+                                <span class="metric-value championship-points"></span>
+                                <span class="metric-label">Championship Points</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value form-score"></span>
+                                <span class="metric-label">Form Score</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value predicted-tier"></span>
+                                <span class="metric-label">Predicted Tier</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value championship-prob"></span>
+                                <span class="metric-label">Championship Probability</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Core Statistics -->
+            <section class="core-statistics">
+                <h3>Core Statistics</h3>
+                <div class="stats-grid">
+                    <div class="stat-row">
+                        <div class="stat-label">Map Win Rate</div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team1-bar" data-stat="mapWinRate">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team2-bar" data-stat="mapWinRate">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-row">
+                        <div class="stat-label">Round Win Rate</div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team1-bar" data-stat="roundWinRate">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team2-bar" data-stat="roundWinRate">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-row">
+                        <div class="stat-label">Attack Win Rate</div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team1-bar" data-stat="attackWinRate">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team2-bar" data-stat="attackWinRate">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-row">
+                        <div class="stat-label">Defense Win Rate</div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team1-bar" data-stat="defenseWinRate">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team2-bar" data-stat="defenseWinRate">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-row">
+                        <div class="stat-label">Comeback Rate</div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team1-bar" data-stat="comebackRate">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team2-bar" data-stat="comebackRate">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-row">
+                        <div class="stat-label">First Kill Rate</div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team1-bar" data-stat="firstKillRate">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team2-bar" data-stat="firstKillRate">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-row">
+                        <div class="stat-label">Clutch Win Rate</div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team1-bar" data-stat="clutchWinRate">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team2-bar" data-stat="clutchWinRate">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-row">
+                        <div class="stat-label">Avg Combat Score</div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team1-bar" data-stat="avgCombatScore">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team2-bar" data-stat="avgCombatScore">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-row">
+                        <div class="stat-label">Key Player Rating</div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team1-bar" data-stat="keyPlayerRating">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team2-bar" data-stat="keyPlayerRating">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-row">
+                        <div class="stat-label">Team Synergy Score</div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team1-bar" data-stat="teamSynergyScore">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team2-bar" data-stat="teamSynergyScore">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-row">
+                        <div class="stat-label">International Experience</div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team1-bar" data-stat="internationalExperience">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team2-bar" data-stat="internationalExperience">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-row">
+                        <div class="stat-label">Head-to-Head Win Rate</div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team1-bar" data-stat="head2headWinRate">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team2-bar" data-stat="head2headWinRate">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-row">
+                        <div class="stat-label">Injury Risk Factor</div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team1-bar" data-stat="injuryRiskFactor">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar team2-bar" data-stat="injuryRiskFactor">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Map Pool Comparison -->
+            <section class="map-pool">
+                <h3>Map Pool Comparison</h3>
+                <div class="maps-grid">
+                    <div class="map-header"></div>
+                    <div class="map-header">Abyss</div>
+                    <div class="map-header">Ascent</div>
+                    <div class="map-header">Bind</div>
+                    <div class="map-header">Haven</div>
+                    <div class="map-header">Lotus</div>
+                    <div class="map-header">Split</div>
+                    <div class="map-header">Sunset</div>
+
+                    <div id="team1-map-name" class="team-map-label"></div>
+                    <div class="map-winrate" data-map="Abyss" data-team="1"></div>
+                    <div class="map-winrate" data-map="Ascent" data-team="1"></div>
+                    <div class="map-winrate" data-map="Bind" data-team="1"></div>
+                    <div class="map-winrate" data-map="Haven" data-team="1"></div>
+                    <div class="map-winrate" data-map="Lotus" data-team="1"></div>
+                    <div class="map-winrate" data-map="Split" data-team="1"></div>
+                    <div class="map-winrate" data-map="Sunset" data-team="1"></div>
+
+                    <div id="team2-map-name" class="team-map-label"></div>
+                    <div class="map-winrate" data-map="Abyss" data-team="2"></div>
+                    <div class="map-winrate" data-map="Ascent" data-team="2"></div>
+                    <div class="map-winrate" data-map="Bind" data-team="2"></div>
+                    <div class="map-winrate" data-map="Haven" data-team="2"></div>
+                    <div class="map-winrate" data-map="Lotus" data-team="2"></div>
+                    <div class="map-winrate" data-map="Split" data-team="2"></div>
+                    <div class="map-winrate" data-map="Sunset" data-team="2"></div>
+                </div>
+            </section>
+
+            <!-- Head-to-Head Prediction -->
+            <section class="head-to-head">
+                <h3>Head-to-Head Prediction</h3>
+                <div class="prediction-container">
+                    <div id="predicted-winner" class="prediction-winner">
+                        <h4>Predicted Winner</h4>
+                        <div class="winner-info">
+                            <span class="winner-name"></span>
+                            <span class="win-probability"></span>
+                        </div>
+                    </div>
+                    <div class="prediction-breakdown">
+                        <div class="team-prediction">
+                            <span class="team-name"></span>
+                            <div class="probability-bar">
+                                <div class="probability-fill team1-prob"></div>
+                            </div>
+                            <span class="probability-text team1-prob-text"></span>
+                        </div>
+                        <div class="team-prediction">
+                            <span class="team-name"></span>
+                            <div class="probability-bar">
+                                <div class="probability-fill team2-prob"></div>
+                            </div>
+                            <span class="probability-text team2-prob-text"></span>
+                        </div>
+                    </div>
+                    <div class="prediction-factors">
+                        <h5>Key Factors</h5>
+                        <div id="key-factors" class="factors-list"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="empty-state">
+            <div class="empty-content">
+                <h3>Select Two Teams to Compare</h3>
+                <p>Choose teams from the dropdowns above to see detailed statistics and head-to-head analysis.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
