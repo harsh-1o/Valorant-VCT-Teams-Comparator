@@ -1,6 +1,6 @@
-// VCT 2025 Champions Team Comparator
+// VCT 2025 Champions Team Comparator - Updated with Correct Map Pool
 
-// Team data
+// Team data with updated map pool (Corrode replaces Split)
 const teamsData = [
     {
       "name": "G2 Esports",
@@ -23,7 +23,7 @@ const teamsData = [
       "internationalExperience": 9,
       "head2headWinRate": 0.72,
       "injuryRiskFactor": 0.10,
-      "maps": {"Abyss": 0.710, "Ascent": 0.678, "Bind": 0.711, "Haven": 0.728, "Lotus": 0.675, "Split": 0.688, "Sunset": 0.739}
+      "maps": {"Abyss": 0.739, "Ascent": 0.707, "Bind": 0.731, "Corrode": 0.813, "Haven": 0.736, "Lotus": 0.715, "Sunset": 0.812}
     },
     {
       "name": "Sentinels",
@@ -46,7 +46,7 @@ const teamsData = [
       "internationalExperience": 8,
       "head2headWinRate": 0.68,
       "injuryRiskFactor": 0.05,
-      "maps": {"Abyss": 0.671, "Ascent": 0.626, "Bind": 0.665, "Haven": 0.625, "Lotus": 0.625, "Split": 0.655, "Sunset": 0.592}
+      "maps": {"Abyss": 0.689, "Ascent": 0.647, "Bind": 0.667, "Corrode": 0.694, "Haven": 0.672, "Lotus": 0.666, "Sunset": 0.641}
     },
     {
       "name": "NRG",
@@ -69,7 +69,7 @@ const teamsData = [
       "internationalExperience": 7,
       "head2headWinRate": 0.58,
       "injuryRiskFactor": 0.15,
-      "maps": {"Abyss": 0.530, "Ascent": 0.561, "Bind": 0.554, "Haven": 0.577, "Lotus": 0.541, "Split": 0.540, "Sunset": 0.628}
+      "maps": {"Abyss": 0.536, "Ascent": 0.566, "Bind": 0.547, "Corrode": 0.622, "Haven": 0.548, "Lotus": 0.538, "Sunset": 0.603}
     },
     {
       "name": "MIBR",
@@ -92,7 +92,7 @@ const teamsData = [
       "internationalExperience": 4,
       "head2headWinRate": 0.45,
       "injuryRiskFactor": 0.08,
-      "maps": {"Abyss": 0.508, "Ascent": 0.517, "Bind": 0.475, "Haven": 0.486, "Lotus": 0.505, "Split": 0.480, "Sunset": 0.529}
+      "maps": {"Abyss": 0.491, "Ascent": 0.504, "Bind": 0.437, "Corrode": 0.468, "Haven": 0.477, "Lotus": 0.454, "Sunset": 0.454}
     },
     {
       "name": "Team Liquid",
@@ -115,7 +115,7 @@ const teamsData = [
       "internationalExperience": 8,
       "head2headWinRate": 0.71,
       "injuryRiskFactor": 0.05,
-      "maps": {"Abyss": 0.654, "Ascent": 0.653, "Bind": 0.653, "Haven": 0.714, "Lotus": 0.658, "Split": 0.640, "Sunset": 0.696}
+      "maps": {"Abyss": 0.679, "Ascent": 0.677, "Bind": 0.671, "Corrode": 0.778, "Haven": 0.705, "Lotus": 0.664, "Sunset": 0.754}
     },
     {
       "name": "FNATIC",
@@ -138,7 +138,7 @@ const teamsData = [
       "internationalExperience": 9,
       "head2headWinRate": 0.75,
       "injuryRiskFactor": 0.08,
-      "maps": {"Abyss": 0.624, "Ascent": 0.658, "Bind": 0.601, "Haven": 0.611, "Lotus": 0.657, "Split": 0.683, "Sunset": 0.665}
+      "maps": {"Abyss": 0.658, "Ascent": 0.679, "Bind": 0.628, "Corrode": 0.706, "Haven": 0.708, "Lotus": 0.699, "Sunset": 0.720}
     },
     {
       "name": "Team Heretics",
@@ -161,7 +161,7 @@ const teamsData = [
       "internationalExperience": 6,
       "head2headWinRate": 0.63,
       "injuryRiskFactor": 0.12,
-      "maps": {"Abyss": 0.614, "Ascent": 0.600, "Bind": 0.573, "Haven": 0.583, "Lotus": 0.591, "Split": 0.649, "Sunset": 0.627}
+      "maps": {"Abyss": 0.628, "Ascent": 0.614, "Bind": 0.578, "Corrode": 0.612, "Haven": 0.623, "Lotus": 0.646, "Sunset": 0.628}
     },
     {
       "name": "GIANTX",
@@ -184,7 +184,7 @@ const teamsData = [
       "internationalExperience": 3,
       "head2headWinRate": 0.52,
       "injuryRiskFactor": 0.10,
-      "maps": {"Abyss": 0.505, "Ascent": 0.566, "Bind": 0.550, "Haven": 0.524, "Lotus": 0.562, "Split": 0.589, "Sunset": 0.590}
+      "maps": {"Abyss": 0.501, "Ascent": 0.560, "Bind": 0.529, "Corrode": 0.494, "Haven": 0.547, "Lotus": 0.569, "Sunset": 0.530}
     },
     {
       "name": "Bilibili Gaming",
@@ -207,7 +207,7 @@ const teamsData = [
       "internationalExperience": 5,
       "head2headWinRate": 0.69,
       "injuryRiskFactor": 0.06,
-      "maps": {"Abyss": 0.659, "Ascent": 0.663, "Bind": 0.692, "Haven": 0.696, "Lotus": 0.653, "Split": 0.678, "Sunset": 0.649}
+      "maps": {"Abyss": 0.684, "Ascent": 0.689, "Bind": 0.718, "Corrode": 0.712, "Haven": 0.703, "Lotus": 0.710, "Sunset": 0.731}
     },
     {
       "name": "EDward Gaming",
@@ -230,7 +230,7 @@ const teamsData = [
       "internationalExperience": 7,
       "head2headWinRate": 0.66,
       "injuryRiskFactor": 0.08,
-      "maps": {"Abyss": 0.603, "Ascent": 0.654, "Bind": 0.679, "Haven": 0.622, "Lotus": 0.654, "Split": 0.650, "Sunset": 0.619}
+      "maps": {"Abyss": 0.622, "Ascent": 0.665, "Bind": 0.678, "Corrode": 0.671, "Haven": 0.679, "Lotus": 0.656, "Sunset": 0.660}
     },
     {
       "name": "XLG Esports",
@@ -253,7 +253,7 @@ const teamsData = [
       "internationalExperience": 3,
       "head2headWinRate": 0.58,
       "injuryRiskFactor": 0.09,
-      "maps": {"Abyss": 0.615, "Ascent": 0.644, "Bind": 0.604, "Haven": 0.636, "Lotus": 0.510, "Split": 0.629, "Sunset": 0.608}
+      "maps": {"Abyss": 0.613, "Ascent": 0.643, "Bind": 0.595, "Corrode": 0.596, "Haven": 0.531, "Lotus": 0.621, "Sunset": 0.632}
     },
     {
       "name": "Dragon Ranger Gaming",
@@ -276,7 +276,7 @@ const teamsData = [
       "internationalExperience": 2,
       "head2headWinRate": 0.48,
       "injuryRiskFactor": 0.07,
-      "maps": {"Abyss": 0.524, "Ascent": 0.538, "Bind": 0.480, "Haven": 0.514, "Lotus": 0.532, "Split": 0.577, "Sunset": 0.524}
+      "maps": {"Abyss": 0.504, "Ascent": 0.526, "Bind": 0.456, "Corrode": 0.460, "Haven": 0.505, "Lotus": 0.550, "Sunset": 0.480}
     },
     {
       "name": "Paper Rex",
@@ -299,7 +299,7 @@ const teamsData = [
       "internationalExperience": 8,
       "head2headWinRate": 0.74,
       "injuryRiskFactor": 0.10,
-      "maps": {"Abyss": 0.684, "Ascent": 0.678, "Bind": 0.731, "Haven": 0.703, "Lotus": 0.677, "Split": 0.723, "Sunset": 0.707}
+      "maps": {"Abyss": 0.723, "Ascent": 0.713, "Bind": 0.771, "Corrode": 0.782, "Haven": 0.747, "Lotus": 0.762, "Sunset": 0.762}
     },
     {
       "name": "T1",
@@ -322,7 +322,7 @@ const teamsData = [
       "internationalExperience": 6,
       "head2headWinRate": 0.64,
       "injuryRiskFactor": 0.05,
-      "maps": {"Abyss": 0.655, "Ascent": 0.598, "Bind": 0.617, "Haven": 0.600, "Lotus": 0.568, "Split": 0.635, "Sunset": 0.635}
+      "maps": {"Abyss": 0.657, "Ascent": 0.613, "Bind": 0.617, "Corrode": 0.630, "Haven": 0.598, "Lotus": 0.637, "Sunset": 0.668}
     },
     {
       "name": "Rex Regum Qeon",
@@ -345,7 +345,7 @@ const teamsData = [
       "internationalExperience": 4,
       "head2headWinRate": 0.56,
       "injuryRiskFactor": 0.12,
-      "maps": {"Abyss": 0.591, "Ascent": 0.580, "Bind": 0.552, "Haven": 0.563, "Lotus": 0.566, "Split": 0.567, "Sunset": 0.589}
+      "maps": {"Abyss": 0.584, "Ascent": 0.583, "Bind": 0.547, "Corrode": 0.553, "Haven": 0.565, "Lotus": 0.563, "Sunset": 0.612}
     },
     {
       "name": "DRX",
@@ -368,9 +368,12 @@ const teamsData = [
       "internationalExperience": 7,
       "head2headWinRate": 0.61,
       "injuryRiskFactor": 0.08,
-      "maps": {"Abyss": 0.585, "Ascent": 0.624, "Bind": 0.578, "Haven": 0.568, "Lotus": 0.558, "Split": 0.515, "Sunset": 0.572}
+      "maps": {"Abyss": 0.585, "Ascent": 0.618, "Bind": 0.572, "Corrode": 0.622, "Haven": 0.563, "Lotus": 0.532, "Sunset": 0.537}
     }
 ];
+
+// Updated map pool for VCT 2025 Champions (Corrode replaces Split)
+const mapPool = ['Abyss', 'Ascent', 'Bind', 'Corrode', 'Haven', 'Lotus', 'Sunset'];
 
 // Initialize the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -405,19 +408,31 @@ class TeamComparator {
         team1Select.innerHTML = '<option value="">Select a team...</option>';
         team2Select.innerHTML = '<option value="">Select a team...</option>';
 
-        // Add all teams to both dropdowns
-        this.teams.forEach((team, index) => {
-            const option1 = document.createElement('option');
-            const option2 = document.createElement('option');
-            
-            option1.value = team.name;
-            option1.textContent = `${team.name} (${team.region})`;
-            
-            option2.value = team.name;
-            option2.textContent = `${team.name} (${team.region})`;
-            
-            team1Select.appendChild(option1);
-            team2Select.appendChild(option2);
+        // Group teams by region
+        const teamsByRegion = {};
+        this.teams.forEach(team => {
+            if (!teamsByRegion[team.region]) {
+                teamsByRegion[team.region] = [];
+            }
+            teamsByRegion[team.region].push(team);
+        });
+
+        // Add options to both selectors
+        [team1Select, team2Select].forEach(selector => {
+            // Add teams grouped by region
+            Object.keys(teamsByRegion).sort().forEach(region => {
+                const optgroup = document.createElement('optgroup');
+                optgroup.label = region;
+                
+                teamsByRegion[region].sort((a, b) => a.name.localeCompare(b.name)).forEach(team => {
+                    const option = document.createElement('option');
+                    option.value = team.name;
+                    option.textContent = `${team.name} (${region})`;
+                    optgroup.appendChild(option);
+                });
+                
+                selector.appendChild(optgroup);
+            });
         });
 
         console.log('Populated dropdowns with', this.teams.length, 'teams each');
@@ -456,15 +471,15 @@ class TeamComparator {
 
         const team1Select = document.getElementById('team1-select');
         const team2Select = document.getElementById('team2-select');
-
+        
         const tempValue = team1Select.value;
         team1Select.value = team2Select.value;
         team2Select.value = tempValue;
-
+        
         const tempTeam = this.selectedTeam1;
         this.selectedTeam1 = this.selectedTeam2;
         this.selectedTeam2 = tempTeam;
-
+        
         this.updateComparison();
     }
 
@@ -493,7 +508,7 @@ class TeamComparator {
                 comparisonContent.classList.add('fade-in');
             }
             if (swapButton) swapButton.disabled = false;
-            
+
             this.updateOverallPerformance();
             this.updateCoreStatistics();
             this.updateMapPool();
@@ -514,7 +529,7 @@ class TeamComparator {
     updateTeamOverview(teamKey, teamData) {
         const overview = document.getElementById(`${teamKey}-overview`);
         if (!overview) return;
-        
+
         const teamName = overview.querySelector('.team-name');
         const teamRegion = overview.querySelector('.team-region');
         const scoreValue = overview.querySelector('.score-value');
@@ -542,17 +557,16 @@ class TeamComparator {
             if (!team1Bar || !team2Bar) return;
             
             const statKey = team1Bar.dataset.stat;
-            
             this.updateStatBar(team1Bar, this.selectedTeam1[statKey], statKey);
             this.updateStatBar(team2Bar, this.selectedTeam2[statKey], statKey);
-            
+
             // Highlight advantages
             const team1Value = this.selectedTeam1[statKey];
             const team2Value = this.selectedTeam2[statKey];
-            
+
             team1Bar.classList.remove('stat-advantage');
             team2Bar.classList.remove('stat-advantage');
-            
+
             if (statKey === 'injuryRiskFactor') {
                 // Lower is better for injury risk
                 if (team1Value < team2Value) team1Bar.classList.add('stat-advantage');
@@ -570,9 +584,9 @@ class TeamComparator {
         const valueSpan = barElement.querySelector('.bar-value');
         
         if (!fill || !valueSpan) return;
-        
+
         let displayValue, percentage;
-        
+
         if (statKey === 'avgCombatScore') {
             displayValue = value.toFixed(1);
             percentage = Math.min((value / 200) * 100, 100);
@@ -589,31 +603,28 @@ class TeamComparator {
             displayValue = (value * 100).toFixed(1) + '%';
             percentage = value * 100;
         }
-        
+
         valueSpan.textContent = displayValue;
-        
         setTimeout(() => {
             fill.style.width = `${percentage}%`;
         }, 100);
     }
 
     updateMapPool() {
-        const maps = ['Abyss', 'Ascent', 'Bind', 'Haven', 'Lotus', 'Split', 'Sunset'];
-        
         const team1MapName = document.getElementById('team1-map-name');
         const team2MapName = document.getElementById('team2-map-name');
-        
+
         if (team1MapName) team1MapName.textContent = this.selectedTeam1.name;
         if (team2MapName) team2MapName.textContent = this.selectedTeam2.name;
-        
-        maps.forEach(map => {
+
+        mapPool.forEach(map => {
             const team1Element = document.querySelector(`[data-map="${map}"][data-team="1"]`);
             const team2Element = document.querySelector(`[data-map="${map}"][data-team="2"]`);
-            
+
             if (team1Element && team2Element) {
                 const team1Rate = this.selectedTeam1.maps[map];
                 const team2Rate = this.selectedTeam2.maps[map];
-                
+
                 this.updateMapWinRate(team1Element, team1Rate);
                 this.updateMapWinRate(team2Element, team2Rate);
             }
@@ -623,9 +634,8 @@ class TeamComparator {
     updateMapWinRate(element, rate) {
         const percentage = (rate * 100).toFixed(1);
         element.textContent = percentage + '%';
-        
+
         element.classList.remove('good', 'average', 'poor');
-        
         if (rate >= 0.65) {
             element.classList.add('good');
         } else if (rate >= 0.55) {
@@ -638,17 +648,17 @@ class TeamComparator {
     updateHeadToHead() {
         const team1Score = this.calculateOverallStrength(this.selectedTeam1);
         const team2Score = this.calculateOverallStrength(this.selectedTeam2);
-        
+
         const total = team1Score + team2Score;
         const team1Prob = team1Score / total;
         const team2Prob = team2Score / total;
-        
+
         // Update predicted winner
         const winnerInfo = document.querySelector('.winner-info');
         if (winnerInfo) {
             const winnerName = winnerInfo.querySelector('.winner-name');
             const winProbability = winnerInfo.querySelector('.win-probability');
-            
+
             if (winnerName && winProbability) {
                 if (team1Prob > team2Prob) {
                     winnerName.textContent = this.selectedTeam1.name;
@@ -659,30 +669,29 @@ class TeamComparator {
                 }
             }
         }
-        
+
         // Update probability bars
         const predictionElements = document.querySelectorAll('.team-prediction');
-        
         if (predictionElements.length >= 2) {
             // Team 1
             const team1Name = predictionElements[0].querySelector('.team-name');
             const team1ProbBar = predictionElements[0].querySelector('.team1-prob');
             const team1ProbText = predictionElements[0].querySelector('.team1-prob-text');
-            
+
             if (team1Name) team1Name.textContent = this.selectedTeam1.name;
             if (team1ProbBar) team1ProbBar.style.width = (team1Prob * 100) + '%';
             if (team1ProbText) team1ProbText.textContent = (team1Prob * 100).toFixed(1) + '%';
-            
+
             // Team 2
             const team2Name = predictionElements[1].querySelector('.team-name');
             const team2ProbBar = predictionElements[1].querySelector('.team2-prob');
             const team2ProbText = predictionElements[1].querySelector('.team2-prob-text');
-            
+
             if (team2Name) team2Name.textContent = this.selectedTeam2.name;
             if (team2ProbBar) team2ProbBar.style.width = (team2Prob * 100) + '%';
             if (team2ProbText) team2ProbText.textContent = (team2Prob * 100).toFixed(1) + '%';
         }
-        
+
         // Update key factors
         this.updateKeyFactors();
     }
@@ -700,11 +709,10 @@ class TeamComparator {
     updateKeyFactors() {
         const factorsList = document.getElementById('key-factors');
         if (!factorsList) return;
-        
+
         factorsList.innerHTML = '';
-        
         const factors = this.analyzeKeyFactors();
-        
+
         factors.forEach(factor => {
             const factorElement = document.createElement('div');
             factorElement.className = 'factor-item';
@@ -715,37 +723,37 @@ class TeamComparator {
 
     analyzeKeyFactors() {
         const factors = [];
-        
+
         // Map control analysis
-        const team1MapAvg = Object.values(this.selectedTeam1.maps).reduce((a, b) => a + b) / 7;
-        const team2MapAvg = Object.values(this.selectedTeam2.maps).reduce((a, b) => a + b) / 7;
-        
+        const team1MapAvg = Object.values(this.selectedTeam1.maps).reduce((a, b) => a + b) / mapPool.length;
+        const team2MapAvg = Object.values(this.selectedTeam2.maps).reduce((a, b) => a + b) / mapPool.length;
+
         if (Math.abs(team1MapAvg - team2MapAvg) > 0.05) {
             const stronger = team1MapAvg > team2MapAvg ? this.selectedTeam1.name : this.selectedTeam2.name;
             factors.push(`${stronger} holds significant map pool advantage`);
         }
-        
+
         // Experience factor
         const expDiff = this.selectedTeam1.internationalExperience - this.selectedTeam2.internationalExperience;
         if (Math.abs(expDiff) >= 2) {
             const experienced = expDiff > 0 ? this.selectedTeam1.name : this.selectedTeam2.name;
             factors.push(`${experienced} brings superior international experience`);
         }
-        
+
         // Form analysis
         const formDiff = this.selectedTeam1.formScore - this.selectedTeam2.formScore;
         if (Math.abs(formDiff) > 0.15) {
             const hotTeam = formDiff > 0 ? this.selectedTeam1.name : this.selectedTeam2.name;
             factors.push(`${hotTeam} showing excellent recent form`);
         }
-        
+
         // Clutch factor
         const clutchDiff = this.selectedTeam1.clutchWinRate - this.selectedTeam2.clutchWinRate;
         if (Math.abs(clutchDiff) > 0.05) {
             const clutchTeam = clutchDiff > 0 ? this.selectedTeam1.name : this.selectedTeam2.name;
             factors.push(`${clutchTeam} excels in high-pressure situations`);
         }
-        
+
         return factors.length > 0 ? factors : ['Teams are evenly matched across key metrics'];
     }
 }
