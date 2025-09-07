@@ -882,7 +882,7 @@ class TeamComparator {
 
         // Add advantage class with crown icon if significantly better
         const advantage = rate - opponentRate;
-        if (advantage > 0.02) { // 2% advantage threshold
+        if (advantage > 0.005) { 
             element.classList.add('map-advantage');
             // Add crown icon
             if (!element.querySelector('.crown-icon')) {
