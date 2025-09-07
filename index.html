@@ -5,6 +5,426 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VCT 2025 Champions - Team Comparator</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional App-Specific Styles */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-teal-700));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+            margin: 0;
+        }
+        
+        .team-selector {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            justify-content: center;
+        }
+        
+        .selector-group {
+            flex: 1;
+            max-width: 300px;
+        }
+        
+        .swap-btn {
+            padding: 12px;
+            border-radius: 50%;
+            min-width: 48px;
+            height: 48px;
+        }
+        
+        .comparison-content {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+        
+        .comparison-content.hidden {
+            display: none;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .overall-performance {
+            margin-bottom: 40px;
+        }
+        
+        .team-overview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .team-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .team-card .team-name {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--color-text);
+        }
+        
+        .team-card .team-region {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .overall-score {
+            margin-bottom: 24px;
+        }
+        
+        .score-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--color-primary);
+            line-height: 1;
+        }
+        
+        .score-label {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+        
+        .key-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        
+        .metric {
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--color-text);
+        }
+        
+        .metric-label {
+            color: var(--color-text-secondary);
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+        
+        .core-statistics, .map-pool, .head-to-head {
+            margin-bottom: 40px;
+        }
+        
+        .core-statistics h3, .map-pool h3, .head-to-head h3 {
+            font-size: 1.8rem;
+            margin-bottom: 24px;
+            color: var(--color-text);
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            gap: 12px;
+        }
+        
+        .stat-row {
+            display: grid;
+            grid-template-columns: 200px 1fr 1fr;
+            align-items: center;
+            padding: 16px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: var(--radius-base);
+            transition: background-color 0.2s ease;
+        }
+        
+        .stat-row:hover {
+            background: rgba(var(--color-teal-500-rgb), 0.05);
+        }
+        
+        .stat-label {
+            font-weight: 600;
+            color: var(--color-text);
+            padding-right: 16px;
+        }
+        
+        .stat-bar-container {
+            padding: 0 16px;
+            position: relative;
+        }
+        
+        .stat-bar-container.advantage::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 60%;
+            background: var(--color-primary);
+            border-radius: 2px;
+        }
+        
+        .stat-bar {
+            position: relative;
+            height: 32px;
+            background: rgba(var(--color-teal-500-rgb), 0.1);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .bar-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-teal-600));
+            transition: width 0.8s ease;
+            width: 0%;
+            border-radius: var(--radius-sm);
+        }
+        
+        .bar-value {
+            position: relative;
+            z-index: 1;
+            color: var(--color-text);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .maps-grid {
+            display: grid;
+            grid-template-columns: 150px repeat(7, 1fr);
+            gap: 8px;
+            align-items: center;
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+        }
+        
+        .map-header {
+            font-weight: bold;
+            color: var(--color-text);
+            text-align: center;
+            padding: 12px 8px;
+            font-size: 0.9rem;
+            background: rgba(var(--color-teal-500-rgb), 0.1);
+            border-radius: var(--radius-sm);
+        }
+        
+        .team-map-label {
+            font-weight: bold;
+            color: var(--color-text);
+            padding: 12px;
+            background: rgba(var(--color-teal-500-rgb), 0.05);
+            border-radius: var(--radius-sm);
+        }
+        
+        .map-winrate {
+            text-align: center;
+            padding: 12px 8px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            border: 2px solid transparent;
+        }
+        
+        .map-winrate.good {
+            background: linear-gradient(135deg, #00d4aa, #00a87a);
+            color: white;
+        }
+        
+        .map-winrate.average {
+            background: linear-gradient(135deg, #ffd700, #cc9900);
+            color: #1a1a1a;
+        }
+        
+        .map-winrate.poor {
+            background: linear-gradient(135deg, #ff6b6b, #cc3333);
+            color: white;
+        }
+        
+        .prediction-container {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+        }
+        
+        .prediction-winner {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .prediction-winner h4 {
+            color: var(--color-text-secondary);
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+        
+        .winner-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+        
+        .win-probability {
+            font-size: 1.2rem;
+            color: var(--color-text);
+        }
+        
+        .prediction-breakdown {
+            display: grid;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+        
+        .team-prediction {
+            display: grid;
+            grid-template-columns: 150px 1fr auto;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .team-prediction .team-name {
+            font-weight: 600;
+            color: var(--color-text);
+        }
+        
+        .probability-bar {
+            height: 24px;
+            background: rgba(var(--color-teal-500-rgb), 0.1);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .probability-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-teal-600));
+            transition: width 0.8s ease;
+            border-radius: var(--radius-full);
+        }
+        
+        .probability-text {
+            font-weight: 600;
+            color: var(--color-text);
+            min-width: 50px;
+            text-align: right;
+        }
+        
+        .prediction-factors h5 {
+            color: var(--color-text);
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+        
+        .factors-list {
+            display: grid;
+            gap: 8px;
+        }
+        
+        .factor-item {
+            padding: 12px 16px;
+            background: rgba(var(--color-teal-500-rgb), 0.05);
+            border-left: 3px solid var(--color-primary);
+            border-radius: var(--radius-sm);
+            color: var(--color-text);
+            transition: all 0.2s ease;
+        }
+        
+        .factor-item:hover {
+            background: rgba(var(--color-teal-500-rgb), 0.1);
+            transform: translateX(4px);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--color-text-secondary);
+        }
+        
+        .empty-state h3 {
+            color: var(--color-text);
+            margin-bottom: 16px;
+        }
+        
+        @media (max-width: 768px) {
+            .team-overview {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-selector {
+                flex-direction: column;
+                gap: 16px;
+            }
+            
+            .selector-group {
+                max-width: 100%;
+            }
+            
+            .stat-row {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                text-align: center;
+            }
+            
+            .maps-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .map-header {
+                display: none;
+            }
+            
+            .team-prediction {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -46,24 +466,24 @@
                     <div id="team1-overview" class="team-card">
                         <h2 class="team-name"></h2>
                         <span class="team-region"></span>
-                        <div class="overall-score">
+                        <div class="overall-score" data-tooltip="overallScore">
                             <div class="score-value"></div>
                             <div class="score-label">Overall Score</div>
                         </div>
                         <div class="key-metrics">
-                            <div class="metric championship-points">
+                            <div class="metric championship-points" data-tooltip="championshipPoints">
                                 <div class="metric-value"></div>
                                 <div class="metric-label">Championship Points</div>
                             </div>
-                            <div class="metric form-score">
+                            <div class="metric form-score" data-tooltip="formScore">
                                 <div class="metric-value"></div>
                                 <div class="metric-label">Form Score</div>
                             </div>
-                            <div class="metric predicted-tier">
+                            <div class="metric predicted-tier" data-tooltip="predictedTier">
                                 <div class="metric-value"></div>
                                 <div class="metric-label">Predicted Tier</div>
                             </div>
-                            <div class="metric championship-prob">
+                            <div class="metric championship-prob" data-tooltip="championshipProbability">
                                 <div class="metric-value"></div>
                                 <div class="metric-label">Championship Probability</div>
                             </div>
@@ -72,24 +492,24 @@
                     <div id="team2-overview" class="team-card">
                         <h2 class="team-name"></h2>
                         <span class="team-region"></span>
-                        <div class="overall-score">
+                        <div class="overall-score" data-tooltip="overallScore">
                             <div class="score-value"></div>
                             <div class="score-label">Overall Score</div>
                         </div>
                         <div class="key-metrics">
-                            <div class="metric championship-points">
+                            <div class="metric championship-points" data-tooltip="championshipPoints">
                                 <div class="metric-value"></div>
                                 <div class="metric-label">Championship Points</div>
                             </div>
-                            <div class="metric form-score">
+                            <div class="metric form-score" data-tooltip="formScore">
                                 <div class="metric-value"></div>
                                 <div class="metric-label">Form Score</div>
                             </div>
-                            <div class="metric predicted-tier">
+                            <div class="metric predicted-tier" data-tooltip="predictedTier">
                                 <div class="metric-value"></div>
                                 <div class="metric-label">Predicted Tier</div>
                             </div>
-                            <div class="metric championship-prob">
+                            <div class="metric championship-prob" data-tooltip="championshipProbability">
                                 <div class="metric-value"></div>
                                 <div class="metric-label">Championship Probability</div>
                             </div>
@@ -103,7 +523,7 @@
                 <h3>Core Statistics</h3>
                 <div class="stats-grid">
                     <div class="stat-row">
-                        <div class="stat-label">Map Win Rate</div>
+                        <div class="stat-label" data-tooltip="mapWinRate">Map Win Rate</div>
                         <div class="stat-bar-container team1-bar" data-stat="mapWinRate">
                             <div class="stat-bar">
                                 <div class="bar-fill"></div>
@@ -119,7 +539,7 @@
                     </div>
                     
                     <div class="stat-row">
-                        <div class="stat-label">Round Win Rate</div>
+                        <div class="stat-label" data-tooltip="roundWinRate">Round Win Rate</div>
                         <div class="stat-bar-container team1-bar" data-stat="roundWinRate">
                             <div class="stat-bar">
                                 <div class="bar-fill"></div>
@@ -135,7 +555,7 @@
                     </div>
                     
                     <div class="stat-row">
-                        <div class="stat-label">Attack Win Rate</div>
+                        <div class="stat-label" data-tooltip="attackWinRate">Attack Win Rate</div>
                         <div class="stat-bar-container team1-bar" data-stat="attackWinRate">
                             <div class="stat-bar">
                                 <div class="bar-fill"></div>
@@ -151,7 +571,7 @@
                     </div>
                     
                     <div class="stat-row">
-                        <div class="stat-label">Defense Win Rate</div>
+                        <div class="stat-label" data-tooltip="defenseWinRate">Defense Win Rate</div>
                         <div class="stat-bar-container team1-bar" data-stat="defenseWinRate">
                             <div class="stat-bar">
                                 <div class="bar-fill"></div>
@@ -165,9 +585,58 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Tactical Stats - Now with same styling as others -->
+                    <div class="stat-row">
+                        <div class="stat-label" data-tooltip="pistolWinRate">Pistol Win Rate</div>
+                        <div class="stat-bar-container team1-bar" data-stat="pistolWinRate">
+                            <div class="stat-bar">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                        <div class="stat-bar-container team2-bar" data-stat="pistolWinRate">
+                            <div class="stat-bar">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-row">
+                        <div class="stat-label" data-tooltip="ecoWinRate">Eco Win Rate</div>
+                        <div class="stat-bar-container team1-bar" data-stat="ecoWinRate">
+                            <div class="stat-bar">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                        <div class="stat-bar-container team2-bar" data-stat="ecoWinRate">
+                            <div class="stat-bar">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-row">
+                        <div class="stat-label" data-tooltip="antiEcoWinRate">Anti-Eco Win Rate</div>
+                        <div class="stat-bar-container team1-bar" data-stat="antiEcoWinRate">
+                            <div class="stat-bar">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                        <div class="stat-bar-container team2-bar" data-stat="antiEcoWinRate">
+                            <div class="stat-bar">
+                                <div class="bar-fill"></div>
+                                <span class="bar-value"></span>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="stat-row">
-                        <div class="stat-label">Comeback Rate</div>
+                        <div class="stat-label" data-tooltip="comebackRate">Comeback Rate</div>
                         <div class="stat-bar-container team1-bar" data-stat="comebackRate">
                             <div class="stat-bar">
                                 <div class="bar-fill"></div>
@@ -183,7 +652,7 @@
                     </div>
                     
                     <div class="stat-row">
-                        <div class="stat-label">First Kill Rate</div>
+                        <div class="stat-label" data-tooltip="firstKillRate">First Kill Rate</div>
                         <div class="stat-bar-container team1-bar" data-stat="firstKillRate">
                             <div class="stat-bar">
                                 <div class="bar-fill"></div>
@@ -199,7 +668,7 @@
                     </div>
                     
                     <div class="stat-row">
-                        <div class="stat-label">Clutch Win Rate</div>
+                        <div class="stat-label" data-tooltip="clutchWinRate">Clutch Win Rate</div>
                         <div class="stat-bar-container team1-bar" data-stat="clutchWinRate">
                             <div class="stat-bar">
                                 <div class="bar-fill"></div>
@@ -215,7 +684,7 @@
                     </div>
                     
                     <div class="stat-row">
-                        <div class="stat-label">Avg Combat Score</div>
+                        <div class="stat-label" data-tooltip="avgCombatScore">Avg Combat Score</div>
                         <div class="stat-bar-container team1-bar" data-stat="avgCombatScore">
                             <div class="stat-bar">
                                 <div class="bar-fill"></div>
@@ -231,7 +700,7 @@
                     </div>
                     
                     <div class="stat-row">
-                        <div class="stat-label">Key Player Rating</div>
+                        <div class="stat-label" data-tooltip="keyPlayerRating">Key Player Rating</div>
                         <div class="stat-bar-container team1-bar" data-stat="keyPlayerRating">
                             <div class="stat-bar">
                                 <div class="bar-fill"></div>
@@ -247,7 +716,7 @@
                     </div>
                     
                     <div class="stat-row">
-                        <div class="stat-label">Team Synergy Score</div>
+                        <div class="stat-label" data-tooltip="teamSynergyScore">Team Synergy Score</div>
                         <div class="stat-bar-container team1-bar" data-stat="teamSynergyScore">
                             <div class="stat-bar">
                                 <div class="bar-fill"></div>
@@ -263,7 +732,7 @@
                     </div>
                     
                     <div class="stat-row">
-                        <div class="stat-label">International Experience</div>
+                        <div class="stat-label" data-tooltip="internationalExperience">International Experience</div>
                         <div class="stat-bar-container team1-bar" data-stat="internationalExperience">
                             <div class="stat-bar">
                                 <div class="bar-fill"></div>
@@ -279,7 +748,7 @@
                     </div>
                     
                     <div class="stat-row">
-                        <div class="stat-label">Head-to-Head Win Rate</div>
+                        <div class="stat-label" data-tooltip="head2headWinRate">Head-to-Head Win Rate</div>
                         <div class="stat-bar-container team1-bar" data-stat="head2headWinRate">
                             <div class="stat-bar">
                                 <div class="bar-fill"></div>
@@ -295,7 +764,7 @@
                     </div>
                     
                     <div class="stat-row">
-                        <div class="stat-label">Injury Risk Factor</div>
+                        <div class="stat-label" data-tooltip="injuryRiskFactor">Injury Risk Factor</div>
                         <div class="stat-bar-container team1-bar" data-stat="injuryRiskFactor">
                             <div class="stat-bar">
                                 <div class="bar-fill"></div>
