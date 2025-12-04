@@ -105,6 +105,7 @@ See `LICENSE` for details.
 
 
 Created with ❤️ by harsh-1o 
+Vibe Coded this for fun
 
 <div align="center">
 <img src="https://visitor-badge.laobi.icu/badge?page_id=harsh-1o.Valorant-VCT-Teams-Comparator&" />
